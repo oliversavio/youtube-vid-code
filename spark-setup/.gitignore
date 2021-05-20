@@ -1,0 +1,7 @@
+target/
+.class
+wordcount/
+.metals/
+.idea/
+.bloop/
+.conf

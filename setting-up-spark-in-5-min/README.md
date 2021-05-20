@@ -5,6 +5,9 @@
  - JDK 8
  - Linux / MacOs / WSL (Windows Subsystem for Linux)
 
+### Official Spark download page
+`https://spark.apache.org/downloads.html`
+
 ### Download the spark archive (v3.1.1) 
 `wget https://apachemirror.wuchna.com/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz`
 
