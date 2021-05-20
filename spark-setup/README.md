@@ -11,12 +11,12 @@
 `mvn archetype:generate -DarchetypeGroupId=net.alchim31.maven -DarchetypeArtifactId=scala-archetype-simple -DdownloadSources=true`
 
 ## Step 2
-### Change to the nwewe Scala version
+### Change to a newer Scala version in the pom.xml
 `<scala.version>2.12.13</scala.version>`
 
 
 ## Step 3
-### Add the lastest Spark SQL dependency
+### Add the latest Spark SQL dependency
 
 ```
 <dependency>
