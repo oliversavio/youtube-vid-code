@@ -4,7 +4,7 @@
 ### Requirements
  - JDK 8
  - Linux / MacOs / WSL (Windows Subsystem for Linux)
- - Spark installed ()
+ - Spark installed (https://youtu.be/yic4UJgpP04)
 
 ## Step 1
 ### Generate a Scala project from the maven archetype
