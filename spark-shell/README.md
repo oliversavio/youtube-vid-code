@@ -1,17 +1,17 @@
-# Using the spark-shell to explore working the XML files in Spark
+# Using the spark-shell
 
 
 ## Starting the default shell
 ```
-spark-shell # Make sure to add to your $PATH path-to-you-spark-installation/bin 
+./spark-shell ## Make sure to add <path-to-you-spark-installation>/bin to your $PATH
 ```
 
-Here's a link to the video that shows you how to set it up.
+If you have't installed the spark-shell as yet, here's a link to the video that shows you how to set it up.
 https://youtu.be/yic4UJgpP04
 
 ## Starting the shell with dependencies
 ```
-spark-shell --packages com.databricks:spark-xml_2.12:0.12.0
+./spark-shell --packages com.databricks:spark-xml_2.12:0.12.0
 ```
 
 ## Databricks spark-xml git repo
