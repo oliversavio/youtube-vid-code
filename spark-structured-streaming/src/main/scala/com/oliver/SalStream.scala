@@ -30,16 +30,23 @@ object SalStream {
       .add("Agency", "string")
       .add("Status", "string")
 
-    val salaries = spark.read
+    val salaries = spark.readStream
       .option("header", "true")
       .schema(schema)
-      .csv("salary/")
+      .csv("data/sal_stream")
 
     val meanTotalSalary = salaries
       .agg(count("*") as "count", avg("TotalPay") as "total_pay")
 
-     meanTotalSalary.show()
+    // meanTotalSalary.show()
+
+    meanTotalSalary.writeStream
+      .format("console")
+      .outputMode("complete")
+      .option("checkpointLocation", "checkpointing")
+      .trigger(Trigger.ProcessingTime("20 seconds"))
+      .start()
+      .awaitTermination()
 
   }
 }
-
