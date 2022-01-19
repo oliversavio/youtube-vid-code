@@ -1,0 +1,28 @@
+basePath: /api
+info:
+  contact:
+    email: your@mail.com
+    name: API Support
+  description: This is an auto-generated API Docs.
+  title: API Examples
+  version: "1.0"
+paths:
+  /v1/:
+    get:
+      description: Returns OK 200 and Hello World as a message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+  /v1/error/:
+    get:
+      description: Returns a 500 Error with message
+      produces:
+      - application/json
+      responses:
+        "500":
+          description: Internal Server Error
+          schema:
+            type: Mocked
+swagger: "2.0"

@@ -1,0 +1,44 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is an auto-generated API Docs.",
+        "title": "API Examples",
+        "contact": {
+            "name": "API Support",
+            "email": "your@mail.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/v1/": {
+            "get": {
+                "description": "Returns OK 200 and Hello World as a message",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/v1/error/": {
+            "get": {
+                "description": "Returns a 500 Error with message",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "Mocked"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
