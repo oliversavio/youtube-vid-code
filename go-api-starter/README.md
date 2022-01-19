@@ -1,3 +1,8 @@
+## System Requirements
+ - Go 1.16
+ - Install `go install github.com/swaggo/swag/cmd/swag@latest`
+ - Docker CE 
+
 ## Build Docker Image
 ```
 make build
