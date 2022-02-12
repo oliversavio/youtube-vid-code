@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"oliversavio/api/errors"
+	"oliversavio/api/service"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -24,5 +25,15 @@ func MockError(c *fiber.Ctx) error {
 	return &errors.AppError{
 		Msg:  "Mocked Error from Handler",
 		Code: 500,
+	}
+}
+
+func QuoteHandler(quotter service.Quotter) func(c *fiber.Ctx) error {
+	return func(c *fiber.Ctx) error {
+		quote, err := quotter.GetQuote()
+		if err != nil {
+			return err
+		}
+		return c.Status(200).SendString(quote)
 	}
 }
