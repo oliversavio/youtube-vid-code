@@ -28,6 +28,7 @@ func (s *Server) setup() {
 	middlewares.FiberMiddlewares(s.App)
 	routes.RegisterSwaggerRoute(s.App)
 	routes.RegisterPublicRoutes(s.App, s.QuoteSvc)
+	routes.RegisterPrometheusRoute(s.App)
 }
 
 func (s *Server) Start() <-chan os.Signal {

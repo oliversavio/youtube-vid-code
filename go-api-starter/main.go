@@ -4,7 +4,9 @@ import (
 	"log"
 
 	_ "oliversavio/api/docs"
+	"oliversavio/api/middlewares"
 	"oliversavio/api/server"
+	"oliversavio/api/service"
 )
 
 // @title API Examples
@@ -16,8 +18,11 @@ import (
 func main() {
 
 	svr := &server.Server{
-		App: server.InitFiberApplication(),
+		App:      server.InitFiberApplication(),
+		QuoteSvc: &service.SimpleQuote{},
 	}
+
+	middlewares.RegisterPrometheusMetrics()
 
 	waitforShutdownInterrupt := svr.Start()
 	<-waitforShutdownInterrupt
