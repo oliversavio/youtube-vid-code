@@ -25,5 +25,5 @@ swag:
 
 .PHONY build: swag docker.build
 
-.PHONY run: docker.clean docker.run
+.PHONY run: docker.run
 
