@@ -13,6 +13,6 @@ FROM debian:buster-slim
 WORKDIR /api/
 COPY --from=builder ["/src/bin/app", "/src/.env*", "/src/docs", "/api"]
 
-EXPOSE 80
+#EXPOSE 80
 CMD ["./app"]
 

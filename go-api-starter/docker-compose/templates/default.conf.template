@@ -1,0 +1,43 @@
+
+upstream backend {
+        server ${APP_HOST_1}:${APP_PORT_1} max_fails=5 fail_timeout=90s;
+        server ${APP_HOST_2}:${APP_PORT_2} max_fails=5 fail_timeout=90s;
+    }
+
+
+limit_req_zone $binary_remote_addr zone=mylimit:10m rate=500r/s;
+
+server {
+    listen ${NGINX_PORT};
+    root /data/www;
+
+    proxy_connect_timeout 2;
+
+    location /api {
+        # Set up rate limit
+        limit_req zone=mylimit burst=20 nodelay;
+
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host  $host;
+        proxy_set_header X-Forwarded-Port  $server_port;
+        
+        location /api/v1 {
+            proxy_pass http://backend;
+        }
+
+        return 404;
+    }
+
+    error_page 404 = @400;         # Treat invalid paths as bad requests
+    location @400 { return 400 '{"status":400,"message":"Bad request"}\n'; }
+
+    error_page 500 501 502 503 504 = @500;
+    location @500 { return 503 '{"status":503,"message":"Server is currently unavailable"}\n'; }
+
+    default_type application/json; # If no content-type, assume JSON
+}

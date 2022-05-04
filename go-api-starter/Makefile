@@ -23,7 +23,16 @@ docker.stop:
 swag:
 	swag init
 
+docker.compose.up:
+	docker-compose -f docker-compose/docker-compose.yml up -d
+
+docker.compose.down:
+	docker-compose -f docker-compose/docker-compose.yml down
+
 .PHONY build: swag docker.build
 
 .PHONY run: docker.run
 
+.PHONY start-server: docker.compose.up
+
+.PHONY stop-server: docker.compose.down
